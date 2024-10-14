@@ -1,4 +1,6 @@
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
+import './navbar.css'
 
 export const Navbar = () => {
   return (
@@ -18,8 +20,19 @@ export const Navbar = () => {
           </button>
         </div>
       </div>
-      <div className='min-h-screen w-3/4 right-0 float-end border-t-2 border-primary-text-color bg-primary-color'>
-        <button className='p-2 w-full flex '></button>
+      <div className='min-h-screen w-3/4 right-0 float-end border-t-2  border-primary-text-color bg-primary-color'>
+        <ul className=''>
+          <li className='link-items'>
+            <Link to={'/catalog'}>
+              <p>Catálogo</p>
+            </Link>
+          </li>
+          <li className='link-items'>
+            <Link to={'/login'}>
+              <p>Panel</p>
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
   )
