@@ -3,5 +3,13 @@
 @tailwind utilities; 
 
 .link-items{
-    @apply border-b-2 border-gray-500/20 p-2
+    @apply border-b-2 border-gray-500/20 p-2 pl-12
+}
+
+.active{
+    @apply font-bold underline  decoration-primary-text-color decoration-4
+}
+
+.link-login{
+    @apply text-center border-2 border-primary-text-color p-1 rounded-lg w-3/4
 }
