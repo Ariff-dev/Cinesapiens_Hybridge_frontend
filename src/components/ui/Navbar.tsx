@@ -7,9 +7,9 @@ export const Navbar = () => {
   const [menu, setMenu] = useState(false)
 
   return (
-    <nav className=''>
-      <div className='flex items-center justify-between'>
-        <div className='mx-2'>
+    <nav className='lg:flex lg:p-4'>
+      <div className='flex items-center justify-between '>
+        <div className='mx-2 lg:mx-8'>
           <h1 className='text-lg font-bold'>
             Cine<span className='text-primary-text-color'>Sapines</span>
           </h1>
@@ -26,7 +26,7 @@ export const Navbar = () => {
           )}
         </div>
       </div>
-      {!menu ? <></> : <ListUrls />}
+      <ListUrls menu={menu} setMenu={setMenu} />
     </nav>
   )
 }
