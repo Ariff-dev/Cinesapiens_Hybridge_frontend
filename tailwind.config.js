@@ -6,6 +6,7 @@ export default {
       colors: {
         'primary-color': '#1A191F',
         'primary-text-color': '#F9AB00',
+        'secondary-color-component': '#222028',
       },
     },
   },
