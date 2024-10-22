@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useContext } from 'react'
+import { AuthContext } from '../../context/auth/AuthContext'
 interface ListUrls {
   menu: boolean
   setMenu?: Dispatch<SetStateAction<boolean>>
@@ -18,6 +19,7 @@ const urls = [
 
 export const ListUrls = ({ menu }: ListUrls) => {
   const pathName = useLocation().pathname
+  const { isAuthenticated, logout } = useContext(AuthContext)
 
   return (
     <div className='w-full'>
@@ -31,17 +33,25 @@ export const ListUrls = ({ menu }: ListUrls) => {
             </li>
           ))}
         </ul>
-        <div className='flex justify-center  w-56'>
+        {!isAuthenticated ? (
+          <div className='flex justify-center  w-56'>
+            <button className='link-login'>
+              <Link to={'/login'}>Iniciar Sesión</Link>
+            </button>
+          </div>
+        ) : (
           <button className='link-login'>
-            <Link to={'/login'}>Iniciar Sesión</Link>
+            <li>
+              <button onClick={logout}>Cerrar Sesión</button>
+            </li>
           </button>
-        </div>
+        )}
       </div>
       <div
         className={`${
           !menu
             ? 'hidden'
-            : 'w-3/4 fixed h-screen  right-0 float-end border-t-2 border-l-2 border-gray-500/20 rounded-md bg-primary-color lg:hidden'
+            : 'w-3/4 fixed z-50 h-screen  right-0 float-end border-t-2 border-l-2 border-gray-500/20 rounded-md bg-primary-color lg:hidden'
         }`}
       >
         <ul className='flex flex-col '>
@@ -57,9 +67,17 @@ export const ListUrls = ({ menu }: ListUrls) => {
           ))}
         </ul>
         <div className='flex justify-center mt-4'>
-          <button className='link-login'>
-            <Link to={'/login'}>Iniciar Sesión</Link>
-          </button>
+          {isAuthenticated ? (
+            <button className='link-login'>
+              <div>
+                <button onClick={logout}>Cerrar Sesión</button>
+              </div>
+            </button>
+          ) : (
+            <button className='link-login'>
+              <Link to={'/login'}>Iniciar Sesión</Link>
+            </button>
+          )}
         </div>
       </div>
     </div>
