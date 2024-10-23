@@ -3,7 +3,9 @@ import LayoutMain from '../components/layouts/LayoutMain'
 import { HomePage } from '../pages/app/HomePage'
 import { Login } from '../pages/auth/Login'
 import SingUp from '../pages/auth/SingUp'
-// import ProtectedRoute from '../components/auth/ProtectedRoute'
+import { Catalog } from '../pages/app/Catalog'
+import AdminDashboard from '../pages/app/admin/AdminDashboard'
+import AdminProtectedRoute from '../components/auth/AdminProtectedRoute'
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +15,18 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/catalog',
+        element: <Catalog />,
+      },
+      {
+        path: '/admin-dashboard',
+        element: (
+          <AdminProtectedRoute>
+            <AdminDashboard />
+          </AdminProtectedRoute>
+        ),
       },
     ],
   },

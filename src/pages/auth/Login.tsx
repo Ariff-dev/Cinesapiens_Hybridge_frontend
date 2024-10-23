@@ -1,13 +1,14 @@
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/auth/AuthContext'
+import { jwtDecode } from 'jwt-decode' // Asegúrate de estar importando correctamente
 
 export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const { setIsAuthenticated } = useContext(AuthContext) // Importar el contexto
+  const { setIsAuthenticated, setToken } = useContext(AuthContext) // Importar el contexto
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -28,11 +29,21 @@ export const Login = () => {
       })
 
       const data = await response.json()
+      const token = data.access_token
 
       if (response.status === 200) {
-        localStorage.setItem('token', data.access_token)
-        setIsAuthenticated(true) // Actualizar el estado global
-        navigate('/')
+        localStorage.setItem('token', token)
+
+        // Decodificar el token para verificar roles u otra información
+        try {
+          const decoded = jwtDecode(token)
+          console.log('Token decodificado:', decoded) // Verifica si el token se decodifica correctamente
+          setToken(decoded) // Guardar el token decodificado en el contexto
+          setIsAuthenticated(true) // Actualizar el estado global de autenticación
+          navigate('/') // Redirigir a la página principal
+        } catch (err) {
+          console.error('Error decodificando el token:', err)
+        }
       } else {
         throw new Error('Email o contraseña incorrectos')
       }

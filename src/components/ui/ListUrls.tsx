@@ -19,7 +19,8 @@ const urls = [
 
 export const ListUrls = ({ menu }: ListUrls) => {
   const pathName = useLocation().pathname
-  const { isAuthenticated, logout } = useContext(AuthContext)
+  const { isAuthenticated, logout, userRole } = useContext(AuthContext)
+  console.log(userRole)
 
   return (
     <div className='w-full'>
@@ -32,6 +33,17 @@ export const ListUrls = ({ menu }: ListUrls) => {
               </Link>
             </li>
           ))}
+          {userRole == 'admin' ? (
+            <li
+              className={` ${pathName == '/admin-dashboard' ? 'active' : ''}`}
+            >
+              <Link to={'/admin-dashboard'}>
+                <p> Admin Dashboard</p>
+              </Link>
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
         {!isAuthenticated ? (
           <div className='flex justify-center  w-56'>
@@ -40,7 +52,7 @@ export const ListUrls = ({ menu }: ListUrls) => {
             </button>
           </div>
         ) : (
-          <button className='link-login'>
+          <button className='link-login '>
             <li>
               <button onClick={logout}>Cerrar Sesión</button>
             </li>
@@ -65,6 +77,19 @@ export const ListUrls = ({ menu }: ListUrls) => {
               </Link>
             </li>
           ))}
+          {userRole == 'admin' ? (
+            <li
+              className={` link-items ${
+                pathName == '/admin-dashboard' ? 'active' : ''
+              }`}
+            >
+              <Link to={'/admin-dashboard'}>
+                <p> Admin Dashboard</p>
+              </Link>
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
         <div className='flex justify-center mt-4'>
           {isAuthenticated ? (

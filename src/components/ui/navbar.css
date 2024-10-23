@@ -11,5 +11,5 @@
 }
 
 .link-login{
-    @apply text-center border-2 border-primary-text-color p-1 rounded-lg w-3/4
+    @apply text-center border-2 border-primary-text-color p-1 rounded-lg w-3/4 lg:list-none lg:w-56
 }
