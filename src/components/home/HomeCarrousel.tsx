@@ -92,7 +92,7 @@ export default function HomeCarrousel() {
         </div>
       </div>
       <div>
-        <div className='flex flex-nowrap items-center absolute gap-6  mx-6'>
+        <div className='flex flex-nowrap items-center  gap-6  mx-6'>
           {dataPrueba
             .slice(currentIndex, currentIndex + itemsToShow)
             .map((movie, index) => (
