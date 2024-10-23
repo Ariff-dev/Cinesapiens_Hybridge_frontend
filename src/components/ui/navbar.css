@@ -3,7 +3,7 @@
 @tailwind utilities; 
 
 .link-items{
-    @apply border-b-2 border-gray-500/20 p-2 pl-12
+    @apply border-b-2 border-gray-500/20 p-2 pl-12 lg:border-none lg:pl-0
 }
 
 .active{

@@ -6,6 +6,8 @@ import SingUp from '../pages/auth/SingUp'
 import { Catalog } from '../pages/app/Catalog'
 import AdminDashboard from '../pages/app/admin/AdminDashboard'
 import AdminProtectedRoute from '../components/auth/AdminProtectedRoute'
+import SapiensProtectedRoute from '../components/auth/SapiensProtectedRoute'
+import SapiensPost from '../pages/app/sapinens/SapiensPost'
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ export const router = createBrowserRouter([
           <AdminProtectedRoute>
             <AdminDashboard />
           </AdminProtectedRoute>
+        ),
+      },
+      {
+        path: '/sapiens-post',
+        element: (
+          <SapiensProtectedRoute>
+            <SapiensPost />
+          </SapiensProtectedRoute>
         ),
       },
     ],

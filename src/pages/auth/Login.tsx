@@ -8,7 +8,7 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const { setIsAuthenticated, setToken } = useContext(AuthContext) // Importar el contexto
+  const { setIsAuthenticated, setToken, setUserRole } = useContext(AuthContext) // Importar el contexto
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -39,6 +39,7 @@ export const Login = () => {
           const decoded = jwtDecode(token)
           console.log('Token decodificado:', decoded) // Verifica si el token se decodifica correctamente
           setToken(decoded) // Guardar el token decodificado en el contexto
+          setUserRole(decoded.sub.role)
           setIsAuthenticated(true) // Actualizar el estado global de autenticación
           navigate('/') // Redirigir a la página principal
         } catch (err) {

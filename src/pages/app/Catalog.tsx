@@ -1,3 +1,3 @@
 export const Catalog = () => {
-  return <div>Holi</div>
+  return <section>holi</section>
 }

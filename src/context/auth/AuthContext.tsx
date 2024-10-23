@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }) => {
         token,
         setToken,
         userRole,
+        setUserRole,
       }}
     >
       {children}

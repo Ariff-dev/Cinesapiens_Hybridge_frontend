@@ -35,10 +35,25 @@ export const ListUrls = ({ menu }: ListUrls) => {
           ))}
           {userRole == 'admin' ? (
             <li
-              className={` ${pathName == '/admin-dashboard' ? 'active' : ''}`}
+              className={`  link-items ${
+                pathName == '/admin-dashboard' ? 'active' : ''
+              }`}
             >
               <Link to={'/admin-dashboard'}>
                 <p> Admin Dashboard</p>
+              </Link>
+            </li>
+          ) : (
+            <></>
+          )}
+          {userRole == 'sapiens' ? (
+            <li
+              className={` link-items ${
+                pathName == '/sapiens-post' ? 'active' : ''
+              }`}
+            >
+              <Link to={'/sapiens-post'}>
+                <p>Creador Sapiens</p>
               </Link>
             </li>
           ) : (
@@ -85,6 +100,19 @@ export const ListUrls = ({ menu }: ListUrls) => {
             >
               <Link to={'/admin-dashboard'}>
                 <p> Admin Dashboard</p>
+              </Link>
+            </li>
+          ) : (
+            <></>
+          )}
+          {userRole == 'sapiens' ? (
+            <li
+              className={` link-items ${
+                pathName == '/sapiens-post' ? 'active' : ''
+              }`}
+            >
+              <Link to={'/sapiens-post'}>
+                <p>Creador Sapiens</p>
               </Link>
             </li>
           ) : (
