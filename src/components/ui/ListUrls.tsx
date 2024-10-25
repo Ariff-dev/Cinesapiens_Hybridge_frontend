@@ -20,6 +20,7 @@ const urls = [
 export const ListUrls = ({ menu }: ListUrls) => {
   const pathName = useLocation().pathname
   const { isAuthenticated, logout, userRole } = useContext(AuthContext)
+
   console.log(userRole)
 
   return (

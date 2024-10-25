@@ -8,7 +8,7 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const { setIsAuthenticated, setToken, setUserRole } = useContext(AuthContext) // Importar el contexto
+  const { setIsAuthenticated, setToken, setUserRole } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -31,32 +31,30 @@ export const Login = () => {
       const data = await response.json()
       const token = data.access_token
 
-      if (response.status === 200) {
+      if (response.ok) {
         localStorage.setItem('token', token)
 
-        // Decodificar el token para verificar roles u otra información
         try {
           const decoded = jwtDecode(token)
-          console.log('Token decodificado:', decoded) // Verifica si el token se decodifica correctamente
           setToken(decoded) // Guardar el token decodificado en el contexto
-          setUserRole(decoded.sub.role)
+          setUserRole(decoded.sub.role) // Ajusta esto según tu estructura de token
           setIsAuthenticated(true) // Actualizar el estado global de autenticación
           navigate('/') // Redirigir a la página principal
         } catch (err) {
           console.error('Error decodificando el token:', err)
         }
       } else {
-        throw new Error('Email o contraseña incorrectos')
+        setError(data.message || 'Email o contraseña incorrectos')
       }
     } catch (err) {
-      setError(err.message)
+      setError('Error de conexión: ' + err.message)
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <section className='  w-full flex flex-col gap-8 justify-center items-center min-h-screen bg-primary-color '>
+    <section className='w-full flex flex-col gap-8 justify-center items-center min-h-screen bg-primary-color'>
       <div>
         <h1 className='font-bold text-xl text-white'>Login</h1>
       </div>
@@ -68,7 +66,7 @@ export const Login = () => {
           className='rounded-lg p-1 placeholder:text-sm placeholder:text-center'
           placeholder='Email'
           value={email}
-          onChange={(e) => setEmail(e.target.value)} // Actualizar el estado del email
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
@@ -78,11 +76,10 @@ export const Login = () => {
           className='rounded-lg p-1 placeholder:text-sm placeholder:text-center'
           placeholder='Contraseña'
           value={password}
-          onChange={(e) => setPassword(e.target.value)} // Actualizar el estado de la contraseña
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
-        {error && <p className='text-red-500'>{error}</p>}{' '}
-        {/* Muestra el error si existe */}
+        {error && <p className='text-red-500'>{error}</p>}
         <button
           type='submit'
           className='bg-secondary-color-component p-1 rounded-lg font-bold'

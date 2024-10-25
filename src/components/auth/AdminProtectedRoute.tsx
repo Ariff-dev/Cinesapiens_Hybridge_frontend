@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { AuthContext } from '../../context/auth/AuthContext'
-import { FaS } from 'react-icons/fa6'
 
 const AdminProtectedRoute = ({ children }) => {
   const { isAuthenticated, userRole } = useContext(AuthContext)
