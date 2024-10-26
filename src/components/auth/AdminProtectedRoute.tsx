@@ -14,7 +14,7 @@ const AdminProtectedRoute = ({ children }) => {
   }, [userRole])
 
   if (loading) {
-    return <div>Cargando...</div> // Puedes agregar un spinner u otro mensaje de carga
+    return <div>Cargando...</div>
   }
 
   // Verifica si el usuario tiene el rol de administrador

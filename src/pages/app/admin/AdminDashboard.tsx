@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const AdminDashboard = () => {
   const [applications, setApplications] = useState([])
-  const [activeUsers, setActiveUsers] = useState([]) // Para manejar usuarios activos
+  const [activeUsers, setActiveUsers] = useState([])
   const [error, setError] = useState(null)
 
   const [sol, setSol] = useState(false)
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
       }
 
       const data = await response.json()
-      setActiveUsers(data) // Actualiza el estado con los usuarios activos
+      setActiveUsers(data)
       setAct(true)
       setSol(false)
     } catch (err) {
@@ -151,7 +151,6 @@ const AdminDashboard = () => {
         </button>
       </div>
       {error && <p className='text-red-500'>{error}</p>}{' '}
-      {/* Muestra error si hay */}
       {sol && (
         <div>
           <h3 className='font-bold'>Solicitudes:</h3>

@@ -8,12 +8,12 @@ export default function Apply() {
       const token = localStorage.getItem('token')
 
       const response = await fetch('http://127.0.0.1:5000/apply', {
-        method: 'POST', // Asegúrate de que sea un método POST
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ user_id: 1 }), // Si necesitas enviar un ID de usuario
+        body: JSON.stringify({ user_id: 1 }),
       })
 
       if (!response.ok) {

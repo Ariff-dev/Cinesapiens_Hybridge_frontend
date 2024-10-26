@@ -8,7 +8,7 @@ export const Catalog = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/posts') // Asegúrate de ajustar la URL según tu backend
+        const response = await fetch('http://localhost:5000/posts')
         if (!response.ok) {
           throw new Error('Network response was not ok')
         }
@@ -21,11 +21,11 @@ export const Catalog = () => {
       }
     }
 
-    fetchPosts() // Llama a la función para obtener las publicaciones
+    fetchPosts()
   }, []) // Solo se ejecuta una vez al montar el componente
 
   if (loading) {
-    return <div>Loading...</div> // Muestra un mensaje de carga mientras se obtienen los datos
+    return <div>Loading...</div>
   }
 
   return (

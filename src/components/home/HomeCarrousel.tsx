@@ -33,7 +33,7 @@ const dataPrueba = [
 
 export default function HomeCarrousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [itemsToShow, setItemsToShow] = useState(2) // Inicialmente 2 elementos a mostrar
+  const [itemsToShow, setItemsToShow] = useState(2)
 
   // Función para determinar cuántos elementos mostrar según el tamaño de la pantalla
   const updateItemsToShow = () => {

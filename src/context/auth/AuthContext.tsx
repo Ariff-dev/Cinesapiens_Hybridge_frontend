@@ -1,13 +1,12 @@
 import { createContext, useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
 
-// Crear un contexto para la autenticación
 export const AuthContext = createContext()
 
 // Componente proveedor de autenticación
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [token, setToken] = useState(null) // Cambiar a null
+  const [token, setToken] = useState(null)
   const [userRole, setUserRole] = useState('')
 
   // Cargar el estado de autenticación al montar el componente
@@ -16,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     if (storedToken) {
       try {
         const decoded = jwtDecode(storedToken)
-        setToken(decoded) // Guarda el token decodificado en el estado
+        setToken(decoded)
         setUserRole(decoded.sub.role) // Establece el rol decodificado
         setIsAuthenticated(true)
       } catch (error) {
