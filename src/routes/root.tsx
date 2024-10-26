@@ -8,6 +8,7 @@ import AdminDashboard from '../pages/app/admin/AdminDashboard'
 import AdminProtectedRoute from '../components/auth/AdminProtectedRoute'
 import SapiensProtectedRoute from '../components/auth/SapiensProtectedRoute'
 import SapiensPost from '../pages/app/sapinens/SapiensPost'
+import SapiensDashboard from '../pages/app/sapinens/SapiensDashboard'
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ export const router = createBrowserRouter([
         element: (
           <SapiensProtectedRoute>
             <SapiensPost />
+          </SapiensProtectedRoute>
+        ),
+      },
+      {
+        path: '/sapiens-dashboard',
+        element: (
+          <SapiensProtectedRoute>
+            <SapiensDashboard />
           </SapiensProtectedRoute>
         ),
       },
