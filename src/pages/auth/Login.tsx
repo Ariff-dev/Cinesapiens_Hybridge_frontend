@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/auth/AuthContext'
 import { jwtDecode } from 'jwt-decode' // Asegúrate de estar importando correctamente
 
@@ -91,6 +91,12 @@ export const Login = () => {
           )}
         </button>
       </form>
+      <p className='mt-4 text-gray-600'>
+        ¿Aún no tienes cuenta?{' '}
+        <Link to='/singup' className='text-blue-500 underline'>
+          Crear cuenta
+        </Link>
+      </p>
     </section>
   )
 }

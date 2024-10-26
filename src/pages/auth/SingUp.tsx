@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function SingUp() {
   const [username, setUsername] = useState('')
@@ -107,6 +107,12 @@ export default function SingUp() {
           )}
         </button>
       </form>
+      <p className='mt-4 text-gray-600'>
+        ¿Ya tienes cuenta?{' '}
+        <Link to='/login' className='text-blue-500 underline'>
+          Iniciar sesión
+        </Link>
+      </p>
     </section>
   )
 }
